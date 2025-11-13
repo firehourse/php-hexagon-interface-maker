@@ -1,0 +1,30 @@
+# --- vendor ---
+/vendor/
+
+# --- composer generated files ---
+/composer.lock
+
+# --- IDE files ---
+# PhpStorm
+/.idea/
+# VSCode
+/.vscode/
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- Logs ---
+*.log
+
+# --- Cache ---
+/cache/
+/tmp/
+
+# --- PHPUnit (如未來需要) ---
+/phpunit.xml
+/.phpunit.result.cache
+
+# --- Local dev ---
+.env
+.env.local
