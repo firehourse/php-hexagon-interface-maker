@@ -12,6 +12,9 @@ switch ($cmd) {
     case 'sync:repo':
         (new SyncRepositoryCommand())->handle($file);
         break;
+    case 'check:di':
+    (new \PTool\Commands\CheckDiCommand())->handle($file);
+    break;
 
     default:
         echo "Available commands:\n";

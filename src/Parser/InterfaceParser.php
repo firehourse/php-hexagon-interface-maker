@@ -13,10 +13,9 @@ class InterfaceParser
     {
         $code = file_get_contents($path);
 
+        // 支援 PHP 7.3~8.x 的寫法
         $factory = new ParserFactory();
-
-        // ★★★ 你的版本需要用這個 ★★★
-        $parser = $factory->createForHostVersion();
+        $parser = $factory->create(ParserFactory::PREFER_PHP7);
 
         $ast = $parser->parse($code);
 
