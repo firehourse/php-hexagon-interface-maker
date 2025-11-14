@@ -3,20 +3,38 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use PTool\Commands\MakeHexagonCommand;
 use PTool\Commands\SyncRepositoryCommand;
+use PTool\Commands\CheckDiCommand;
 
+// 取得 command
 $cmd = $argv[1] ?? null;
-$file = $argv[2] ?? null;
+
+// 取得 command 的第一個參數（如：檔案路徑、moduleName）
+$arg1 = $argv[2] ?? null;
 
 switch ($cmd) {
+
     case 'sync:repo':
-        (new SyncRepositoryCommand())->handle($file);
+        (new SyncRepositoryCommand())->handle($arg1);
         break;
+
     case 'check:di':
-    (new \PTool\Commands\CheckDiCommand())->handle($file);
-    break;
+        (new CheckDiCommand())->handle($arg1);
+        break;
+
+    case 'make:hexagon':
+        // 現在 make:hexagon 只需要 moduleName
+        (new MakeHexagonCommand())->handle($arg1);
+        break;
 
     default:
         echo "Available commands:\n";
         echo "  sync:repo {InterfaceFilePath}\n";
+        echo "  check:di {ModuleName}\n";
+        echo "  make:hexagon {ModuleName}\n";
+        echo "\nExamples:\n";
+        echo "  pTool sync:repo modules/foo/interfaces/.../OrderRepositoryInterface.php\n";
+        echo "  pTool make:hexagon ContractRenewal\n";
+        break;
 }
